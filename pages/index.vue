@@ -1,34 +1,28 @@
 <template>
   <div class="container-fluid">
     <div class="row my-5">
-      <div class="col-ig-6">
-        <nuxt-link to="/PERPUSTAKAAN DIGITAL/tambah">
-          <div class="card bg-PERPUSTAKAAN DIGITAL rounded-5">
+      <div class="col-lg-6">
+        <nuxt-link to="/pengunjung/">
+          <div class="card bg-cari buku rounded-5">
             <div class="card-body">
-              <h2>PERPUSTAKAAN DIGITAL</h2>
+              <!-- <h2>Halaman perpustakaan</h2> -->
+                <button type="submit" class="btn btn-lg rounde-5 text-blue">Halaman perpustakaan</button>
             </div>
           </div>
         </nuxt-link>
       </div>
+
       <div class="col-lg-6">
-        <nuxt-link to="cari buku">
-          <div class="card bg-cari buku rounded-5">
+        <nuxt-link to="/pengunjung/tambah">
+          <div class="card bg-pengunjung rounded-5">
             <div class="card-body">
-              <h2>cari buku</h2>
+              <!-- <h2>Isi data pengunjung</h2> -->
+                <button type="submit" class="btn btn-lg rounde-5 text-blue">data pengunjung</button>
             </div>
           </div>
         </nuxt-link>
       </div>
     </div>
-  </div>
-  <div class="col-lg-6">
-    <nuxt-link to="pengunjung">
-      <div class="card bg-pengunjung rounded-5">
-        <div class="card-body">
-          <h2>pengunjung</h2>
-        </div>
-      </div>
-    </nuxt-link>
   </div>
 </template>
 
@@ -37,19 +31,23 @@
 
 <style scoped>
 .card {
-  height: 230px;
-  box-shadow: 1px 1px 10px #73a3c6;
+  height: 100vh;
+  box-shadow: 50px 10px 200px;
 }
 
-h2 {
-  background-image: url('../assets/img/bg-home-PERPUSTAKAAN DIGITAL.jpeg');
+.card.bg-pengunjung {
+  background-image: url('../assets/img/bg-home-kunjungan (1).jpeg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
 }
 
-.card.bg-cari buku {
-  background: url('../assets/img/bg-home-cari buku.jpg') no-repeat center center;
+.card.bg-cari {
+  background: url('../assets/img/bg-home-cari-buku (1).jpg') no-repeat center center;
   background-size: cover;
+}
+.btn{
+  margin-top: 40%;
+  margin-left: 15%;
 }
 </style>
