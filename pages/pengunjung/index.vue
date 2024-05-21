@@ -4,7 +4,15 @@
       <div class="col-lg-12">
         <h2 class="text center my-4">RIWAYAT KUNJUNGAN</h2>
         <div class="my-3">
-          <input type="search" class="form-control-lg rounded-5" placeholder="cari...">
+          <div class="row d-flex">
+            <div class="col">
+              <form class="input-group flex-nowrap rounded-5">
+                <span class="input-group-text"><img src="~/assets/img/img-cari.png" alt="" class="img-cari"
+                    aria-label="Search" aria-describedby="search-addon"></span>
+                <input type="search" class="form-control" placeholder="cari">
+              </form>
+            </div>
+          </div>
         </div>
         <div class="my-3 text-muted">menampilkan 1 dari 1</div>
         <table class="table">
@@ -43,5 +51,19 @@
 .btn {
   background-color: #5EAFB5;
   margin-right: 2rem;
+}
+
+.img-cari {
+  width: 80%
+}
+
+input {
+  border-left: none;
+}
+
+.input-group-text {
+  width: 5%;
+  background-color: white;
+  border-right: none;
 }
 </style>
