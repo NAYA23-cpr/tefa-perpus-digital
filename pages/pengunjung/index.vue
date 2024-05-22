@@ -14,35 +14,39 @@
             </div>
           </div>
         </div>
-        <div class="my-3 text-muted">menampilkan 1 dari 1</div>
+        <div class="my-3 text-muted">Menampilkan 1 dari 1</div>
         <table class="table">
           <thead>
             <tr>
               <td>NO</td>
               <td>NAMA</td>
               <td>KEANGGOTAAN</td>
-              <td>KEPERLUAN</td>
+              <td>KELAS LENGKAP</td>
               <td>TANGGAL</td>
+              <td>KEPERLUAN</td>
             </tr>
           </thead>
 
-          <body>
-            <tr>
-              <td>1.</td>
-              <td>naya hinayatulloh</td>
-              <td>siswi</td>
-              <td>meminjam</td>
-              <td>25 Februari 2024, 23.31.00</td>
+          <tbody>
+            <tr v-for="(visitor, i) in visitors" :key="i">
+              <td>{{ i + 1 }}.</td>
+              <td>{{ visitor.Nama }}</td>
+              <td>{{ visitor.Keanggotaan.Nama }}</td>
+              <td>{{ visitor.Tingkat }} {{ visitor.Jurusan }} {{ visitor.Kelas }}</td>
+              <td>{{ visitor.Tanggal }}</td>
+              <td>{{ visitor.Keperluan.nama }}</td>
             </tr>
-          </body>
+          </tbody>
         </table>
       </div>
     </div>
   </div>
   <div class="button float-end">
-    <button type="submit" class="btn btn-lg rounde-5 text-blue">kembali</button>
+    <nuxt-link to="/pengunjung/tambah">
+      <button type="submit" class="btn btn-lg rounde-5 text-blue">kembali</button>
+    </nuxt-link>
     <nuxt-link to="/buku">
-      <button type="submit" class="btn btn-lg rounde-5 text-blue">cari buku</button>
+      <button class="btn btn-lg rounde-5 text-blue">cari buku</button>
     </nuxt-link>
   </div>
 </template>
@@ -54,7 +58,7 @@
 }
 
 .img-cari {
-  width: 80%
+  width: 80%;
 }
 
 input {
@@ -67,3 +71,16 @@ input {
   border-right: none;
 }
 </style>
+<script setup>
+const supabase = useSupabaseClient()
+const visitors = ref([])
+
+const getPengunjung = async () => {
+  const { data, error } = await supabase.from('Pengunjung').select(`*, Keanggotaan(*), Keperluan(*)`)
+  if (data) visitors.value = data
+
+}
+onMounted(() => {
+  getPengunjung()
+})
+</script>

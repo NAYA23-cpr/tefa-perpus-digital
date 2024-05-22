@@ -56,6 +56,9 @@
           </div>
         </div>
       </div>
+      <nuxt-link to="/pengunjung">
+        <button type="submit" class="btn btn-lg rounde-5 text-blue float-end">Kembali</button>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -86,4 +89,9 @@ input {
   object-fit: cover;
   object-position: 0 30;
 }
+.btn {
+  background-color: #5EAFB5;
+  margin-right: 2rem;
+}
+
 </style>
