@@ -1,5 +1,5 @@
 <template>
-  <div class="row p-3 bg-primary text-white" style="background-color: #114E5B">
+  <div class="row p-3 bg-primary text-white sticky-top" style="background-color: #114E5B">
     <div class="col-lg-1">
       <img src="@/assets/img/LOGO.png" alt="logo SMKN 4">
     </div>

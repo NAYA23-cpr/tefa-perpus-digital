@@ -2,22 +2,20 @@
   <div class="container-fluid">
     <div class="row my-5">
       <div class="col-lg-6">
-        <nuxt-link to="/pengunjung/">
+        <nuxt-link to="/pengunjung/tambah" style="text-decoration:none;">
           <div class="card bg-cari buku rounded-5">
             <div class="card-body">
-              <!-- <h2>Halaman perpustakaan</h2> -->
-                <button type="submit" class="btn btn-lg rounde-5 text-blue">Halaman perpustakaan</button>
+              <h2 class="text-white">Pengunjung</h2>
             </div>
           </div>
         </nuxt-link>
       </div>
 
       <div class="col-lg-6">
-        <nuxt-link to="/pengunjung/tambah">
+        <nuxt-link to="/buku" style="text-decoration: none;">
           <div class="card bg-pengunjung rounded-5">
             <div class="card-body">
-              <!-- <h2>Isi data pengunjung</h2> -->
-                <button type="submit" class="btn btn-lg rounde-5 text-blue">data pengunjung</button>
+              <h2 class="text-white">Buku</h2>
             </div>
           </div>
         </nuxt-link>
@@ -46,8 +44,9 @@
   background: url('../assets/img/bg-home-cari-buku (1).jpg') no-repeat center center;
   background-size: cover;
 }
-.btn{
-  margin-top: 40%;
-  margin-left: 15%;
+
+h2 {
+  margin-top: 50%;
+  text-align: center;
 }
 </style>

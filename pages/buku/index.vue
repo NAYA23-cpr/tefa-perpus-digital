@@ -1,71 +1,62 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col">
         <h2 class="text-center my-4">CARI BUKU</h2>
-
-        <div class="my-3">
-          <div class="row d-flex">
-            <div class="col">
-              <form class="input-group flex-nowrap rounded-5">
-                <span class="input-group-text"><img src="~/assets/img/img-cari.png" alt="" class="img-cari"
-                    aria-label="Search" aria-describedby="search-addon"></span>
-                <input type="search" class="form-control" placeholder="cari">
-              </form>
-            </div>
-          </div>
-        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <form form @sabmit.prevent="getbooks" class="input-group flex-nowrap rounded-5">
+          <span class="input-group-text"><img src="~/assets/img/img-cari.png" alt="" class="img-cari"
+              aria-label="Search" aria-describedby="search-addon"></span>
+          <input v-model="keyword" type="search" class="form-control" placeholder="cari">
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
         <div class="my-3 text-muted">Koleksi Buku</div>
-        <div class="row">
-          <div class="col-lg-2">
-            <div class="card mb-3">
-              <div class="card-body">
-                <img src="~/assets/img/novel2.jpg" class="cover" alt="cover 1">
-              </div>
-            </div>
+      </div>
+    </div>
+    <div class="row">
+      <div v-for="(book, i) in books" key="i" class="col-2 d-flex">
+        <div class="card flex-fill mb-3">
+          <nuxt-link :to="`/buku/${book.id}`">
+          <div class="card-body">
+            <img :src="book.cover" class="cover card-img-top" alt="cover">
           </div>
-          <div class="col-lg-2">
-            <nuxt-link to="/buku/detailbuku">
-              <div class="card mb-3">
-                <div class="card-body">
-                  <img src="~/assets/img/novel4.jpeg" class="cover" alt="cover 3">
-                </div>
-              </div>
-            </nuxt-link>
-          </div>
-          <div class="col-lg-2">
-            <div class="card mb-3">
-              <div class="card-body">
-                <img src="~/assets/img/novel.png" class="cover" alt="cover 3">
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2">
-            <div class="card mb-3">
-              <div class="card-body">
-                <img src="~/assets/img/novel3.jpg" class="cover" alt="cover 3">
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2">
-            <div class="card mb-3">
-              <div class="card-body">
-                <img src="~/assets/img/image 6.png" class="cover" alt="cover 3">
-              </div>
-            </div>
-          </div>
+        </nuxt-link>
         </div>
       </div>
-      <nuxt-link to="/pengunjung">
-        <button type="submit" class="btn btn-lg rounde-5 text-blue float-end">Kembali</button>
-      </nuxt-link>
     </div>
+
+    <nuxt-link to="/pengunjung">
+      <button type="submit" class="btn btn-lg rounde-5 text-blue float-end">Kembali</button>
+    </nuxt-link>
   </div>
 </template>
+
+<script setup>
+const supabase = useSupabaseClient()
+const books = ref([])
+
+const getbooks = async () => {
+  const { data, error } = await supabase.from('buku').select('*')
+  if (data) books.value = data
+}
+
+onMounted(() => {
+  getbooks()
+})
+
+// <from @submit.prevent="getbooks">
+//   <input v-model="keyword" type="search">
+// </from>
+</script>
+
 <style scoped>
 .card-body {
-  width: 100%;
-  height: 22;
   padding: 0;
 }
 
@@ -83,15 +74,14 @@ input {
   border-right: none;
 }
 
-.cover {
+/* .cover {
   width: 100%;
-  height: 22;
   object-fit: cover;
   object-position: 0 30;
-}
+} */
+
 .btn {
   background-color: #5EAFB5;
   margin-right: 2rem;
 }
-
 </style>
