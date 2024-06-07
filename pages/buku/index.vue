@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <form form @sabmit.prevent="getbooks" class="input-group flex-nowrap rounded-5">
+        <form form @submit.prevent="getbooks" class="input-group flex-nowrap rounded-5">
           <span class="input-group-text"><img src="~/assets/img/img-cari.png" alt="" class="img-cari"
               aria-label="Search" aria-describedby="search-addon"></span>
           <input v-model="keyword" type="search" class="form-control" placeholder="cari">
@@ -23,10 +23,10 @@
       <div v-for="(book, i) in books" key="i" class="col-2 d-flex">
         <div class="card flex-fill mb-3">
           <nuxt-link :to="`/buku/${book.id}`">
-          <div class="card-body">
-            <img :src="book.cover" class="cover card-img-top" alt="cover">
-          </div>
-        </nuxt-link>
+            <div class="card-body">
+              <img :src="book.cover" class="cover card-img-top" alt="cover">
+            </div>
+          </nuxt-link>
         </div>
       </div>
     </div>
@@ -39,10 +39,11 @@
 
 <script setup>
 const supabase = useSupabaseClient()
+const keyword = ref('')
 const books = ref([])
 
 const getbooks = async () => {
-  const { data, error } = await supabase.from('buku').select('*')
+  const { data, error } = await supabase.from('buku').select('*').ilike('judul', `%${keyword.value}%`)
   if (data) books.value = data
 }
 
