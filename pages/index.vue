@@ -31,18 +31,17 @@
 .card {
   height: 100vh;
   box-shadow: 50px 10px 200px;
-}
-
-.card.bg-pengunjung {
-  background-image: url('../assets/img/bg-home-kunjungan (1).jpeg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
 }
 
+.card.bg-pengunjung {
+  background-image: url('../assets/img/bg-home-kunjungan (1).jpeg');
+}
+
 .card.bg-cari {
-  background: url('../assets/img/bg-home-cari-buku (1).jpg') no-repeat center center;
-  background-size: cover;
+  background: url('../assets/img/bg-home-cari-buku (1).jpg');
 }
 
 h2 {
