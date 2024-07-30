@@ -37,11 +37,11 @@
 }
 
 .card.bg-pengunjung {
-  background-image: url('../assets/img/bg-home-kunjungan (1).jpeg');
+  background-image: url('../assets/img/bg-home.jpg');
 }
 
 .card.bg-cari {
-  background: url('../assets/img/bg-home-cari-buku (1).jpg');
+  background: url('../assets/img/bg-home-kunjungan.jpeg');
 }
 
 h2 {
