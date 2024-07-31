@@ -6,10 +6,11 @@
         <div class="my-3">
           <div class="row d-flex">
             <div class="col">
-              <form class="input-group flex-nowrap rounded-5">
+
+              <form @submit.prevent="getBooks" class="input-group flex-nowrap rounded-5">
                 <span class="input-group-text"><img src="~/assets/img/img-cari.png" alt="" class="img-cari"
                     aria-label="Search" aria-describedby="search-addon"></span>
-                <input type="search" class="form-control" placeholder="cari">
+                <input v-model="keyword" type="search" class="form-control" placeholder="cari">
               </form>
             </div>
           </div>
@@ -28,7 +29,7 @@
           </thead>
 
           <tbody>
-            <tr v-for="(visitor, i) in visitors" :key="i">
+            <tr v-for="(visitor, i) in pengunjungFiltered" :key="i">
               <td>{{ i + 1 }}.</td>
               <td>{{ visitor.Nama }}</td>
               <td>{{ visitor.Keanggotaan.Nama }}</td>
@@ -73,13 +74,31 @@ input {
 </style>
 <script setup>
 const supabase = useSupabaseClient()
+const keyword = ref('')
 const visitors = ref([])
 
 const getPengunjung = async () => {
-  const { data, error } = await supabase.from('Pengunjung').select(`*, Keanggotaan(*), Keperluan(*)`)
+  const { data, error } = await supabase.from('Pengunjung')
+    .select(`*, Keanggotaan(*), Keperluan(*)`)
   if (data) visitors.value = data
 
 }
+
+// const getBooks = async () => {
+//     const {data, error} = await supabase.from('buku')
+//     .select(`*,kategori(*)`)
+//     .ilike('judul', `%${keyword.value}%`)
+//     if (data) books.value = data
+// }
+
+const pengunjungFiltered = computed(() => {
+  return visitors.value.filter((b) => {
+    return (
+      b.Nama?.toLowerCase().includes(keyword.value?.toLowerCase()) ||
+      b.Keanggotaan.Nama?.toLowerCase().includes(keyword.value?.toLowerCase())
+    )
+  })
+})
 onMounted(() => {
   getPengunjung()
 })

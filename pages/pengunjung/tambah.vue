@@ -8,15 +8,15 @@
         </div>
         <div class="mb-3">
           <select v-model="form.Keanggotaan" class="form-control-lg form-select rounded-5">
-            <option value="">Keanggotaan</option>
+            <option value=""disabled>Keanggotaan</option>
             <option v-for="(member, i) in members" :key="i" :value="member.id">{{ member.Nama }}</option>
           </select>
         </div>
         <div class="mb-3">
-          <div class="row">
+          <div class="row" v-if="form.Keanggotaan == '2'">
             <div class="col-md-4">
               <select v-model="form.Tingkat" class="form-control form-control-lg form-select rounded-5 mb-2">
-                <option value="">Tingkat</option>
+                <option value="" disabled>Tingkat</option>
                 <option value="X">X</option>
                 <option value="XI">XI</option>
                 <option value="XII">XII</option>
@@ -24,7 +24,7 @@
             </div>
             <div class="col-md-4">
               <select v-model="form.Jurusan" class="form-control form-control-lg form-select rounded-5 mb-2">
-                <option value="">Jurusan</option>
+                <option value="" disabled>Jurusan</option>
                 <option value="PPLG">PPLG</option>
                 <option value="TKJT">TKJT</option>
                 <option value="TSM">TSM</option>
@@ -34,7 +34,7 @@
             </div>
             <div class="col-md-4">
               <select v-model="form.Kelas" class="form-control form-control-lg form-select rounded-5 mb-2">
-                <option value="">Kelas</option>
+                <option value="" disabled>Kelas</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -45,7 +45,7 @@
         </div>
         <div class="mb-3">
           <select v-model="form.Keperluan" class="form-control form-control-lg form-select rounded-5">
-            <option value="">Keperluan</option>
+            <option value=""disabled>Keperluan</option>
             <option v-for="(item, i) in objectives" :key="i" :value="item.id">{{ item.nama }}</option>
 
           </select>
